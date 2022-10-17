@@ -1,0 +1,23 @@
+<view class="container">
+  <view class='template_title1 flex-x '>
+    <view class="title-main">
+      <text class="title-txt">标题：</text>
+      <input model:value="{{title}}" placeholder="自定义大转盘内容" />
+    </view>
+  </view>
+  <block wx:for="{{conLists}}" wx:key="index">
+    <view class='template_title_list flex-x'>
+      <view class="del" bindtap='del' data-index='{{index}}'>-</view>
+      <input placeholder='请填写内容哦~ 最多10个字哦~' value="{{item}}" bindinput='changeConTitle' data-index='{{index}}'></input>
+    </view>
+  </block>
+
+  <view class='template_title flex-x' bindtap='add'>
+    <view class='add_con flex-x'>
+      <text>+</text>
+      <view>添加内容</view>
+    </view>
+  </view>
+
+  <view class="btn" bindtap="submit">完成</view>
+</view>

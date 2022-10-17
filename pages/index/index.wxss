@@ -1,0 +1,40 @@
+.container {
+  padding: 30rpx;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.zhuanpan {
+  margin-top: 30rpx;
+}
+
+.tool-container {
+  position: absolute;
+  right: 45rpx;
+  width: 300rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.tool-container view {
+  margin-bottom: 10rpx;
+}
+
+.tool-custom {
+  color: #fff;
+  font-size: 36rpx;
+  width: 150rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  background-color: #d46877;
+}

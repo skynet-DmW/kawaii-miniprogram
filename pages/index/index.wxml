@@ -1,0 +1,36 @@
+<view class="container">
+  <image class="bg" src="/static/images/bg.png"></image>
+  <view class="zhuanpan">
+    <!-- 引用组件↓↓↓ -->
+    <zhuanpan id='zhuanpan' bind:myData='getData' bind:myAwards="getAwards" bind:startZhuan="startZhuan" size='{{size}}'
+      musicflg='{{musicflg}}' fastJuedin='{{fastJuedin}}' repeat='{{repeat}}' zhuanpanArr='{{xiaojuedingArr}}'
+      awardsConfig='{{awardsConfig}}'></zhuanpan>
+    <!-- 引用组件↑↑↑ -->
+  </view>
+
+  <view class="tool-container">
+    <view>
+      <text>声音：</text>
+      <switch color="#d46877" checked="{{musicflg}}" type='switch' bindchange="musicChange" />
+    </view>
+    <view class="tool-custom" bindtap="toAdd">
+      <text>自定义</text>
+    </view>
+    <view class="tool-custom" bindtap="toCustom">
+      <text>我的</text>
+    </view>
+  </view>
+
+  <!-- <view style='width:100%;margin:5px;text-align:center;'>
+    转盘声音
+    <switch type='switch' bindchange="switch1Change1" />
+    不重复抽取
+    <switch type='switch' bindchange="switch1Change2" />
+  </view>
+  <view style='width:100%;margin:5px;text-align:center;'>
+    快速决定
+    <switch type='switch' bindchange="switch1Change3" />
+    概率
+    <switch type='switch' bindchange="switch1Change4" />
+  </view> -->
+</view>

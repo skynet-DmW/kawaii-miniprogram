@@ -1,0 +1,17 @@
+<view class="container">
+  <block wx:for="{{zpList}}" wx:key="index">
+    <view class="card-container" bindtap="onEvent" data-index="{{index}}" bindtouchstart="mytouchstart"
+      bindtouchend="mytouchend">
+      <view>
+        <text>名称：</text>
+        <text>{{item.key}}</text>
+      </view>
+      <view class="card-btn" catchtap="add" data-index="{{index}}">
+        <text>修改</text>
+      </view>
+    </view>
+  </block>
+  <view class="btn" bindtap="add">
+    <text>自定义</text>
+  </view>
+</view>

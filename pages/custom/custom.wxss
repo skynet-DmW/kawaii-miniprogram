@@ -1,0 +1,43 @@
+page {
+  background: #f3f3f3;
+}
+
+.card-container {
+  border-radius: 20rpx;
+  background-color: #fff;
+  margin: 30rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-container text {
+  font-size: 40rpx;
+  color: #d46877;
+}
+
+.card-btn {
+  width: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card-btn text {
+  font-size: 35rpx;
+  color: #00cc00;
+}
+
+.btn {
+  width: 300rpx;
+  height: 100rpx;
+  border-radius: 30rpx;
+  font-size: 40rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  background-color: #d46877;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
