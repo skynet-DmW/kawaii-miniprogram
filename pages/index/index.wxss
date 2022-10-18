@@ -28,7 +28,7 @@
   margin-bottom: 10rpx;
 }
 
-.tool-custom {
+.tool-item {
   color: #fff;
   font-size: 36rpx;
   width: 150rpx;

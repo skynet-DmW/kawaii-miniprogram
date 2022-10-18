@@ -1,4 +1,3 @@
-// pages/custom/custom.js
 const app = getApp()
 Page({
 

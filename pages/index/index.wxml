@@ -13,10 +13,10 @@
       <text>声音：</text>
       <switch color="#d46877" checked="{{musicflg}}" type='switch' bindchange="musicChange" />
     </view>
-    <view class="tool-custom" bindtap="toAdd">
+    <view class="tool-item" bindtap="toAdd">
       <text>自定义</text>
     </view>
-    <view class="tool-custom" bindtap="toCustom">
+    <view class="tool-item" bindtap="toDiy">
       <text>我的</text>
     </view>
   </view>

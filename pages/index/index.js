@@ -275,9 +275,9 @@ Page({
     })
   },
 
-  toCustom() {
+  toDiy() {
     wx.navigateTo({
-      url: '/pages/custom/custom',
+      url: '/pages/diy/diy',
     })
   },
 
