@@ -1,38 +1,31 @@
 <view class="canvas-container">
-  <view animation="{{animationData}}" class="gb-wheel-content" style='width:{{size-2}}rpx;height:{{size}}rpx;'>
+  <view animation="{{animationData}}" class="wheel-content" style="width: {{ size - 2 }}rpx; height: {{ size }}rpx;">
     <!-- 扇形颜色背景 当选项长度等于2或者3时做了特殊处理 -->
     <view class="canvas-list">
-      <view class="canvas-item2" wx:for="{{awardsConfig.awards}}" wx:key="key"
-        style="transform: rotate({{item.item2Deg}});background-color:{{awardsConfig.awards.length==2?item.color:''}};opacity:{{awardsConfig.awards.length==2?item.opacity:awardsConfig.awards.length==3?item.opacity:''}};width:{{size}}rpx;height:{{size/2-2}}rpx;transform-origin:{{size/2}}rpx {{size/2}}rpx">
-        <view class="canvas-item2-after"
-          style="transform: rotate({{item.afterDeg}});background-color:{{item.color}};opacity:{{awardsConfig.awards.length==3?'':item.opacity}};width:{{size/2}}rpx;height:{{size/2}}rpx;transform-origin: {{size/2}}rpx {{size/2}}rpx">
+      <view class="canvas-item" wx:for="{{ lottery.awards }}" wx:key="index" style="transform: rotate({{ item.item2Deg }}); background-color: {{ lottery.awards.length === 2 ? item.color : ''}}; opacity: {{ lottery.awards.length === 2 ? item.opacity : lottery.awards.length === 3 ? item.opacity : ''}}; width: {{ size }}rpx; height: {{ size / 2 - 2 }}rpx; transform-origin: {{ size / 2 }}rpx {{ size / 2 }}rpx;">
+        <view class="canvas-item-after" style="transform: rotate({{ item.afterDeg }}); background-color: {{ item.color }}; opacity: {{ lottery.awards.length === 3 ? '' : item.opacity }}; width: {{ size / 2 }}rpx; height: {{ size / 2 }}rpx; transform-origin: {{ size / 2 }}rpx {{ size / 2}}rpx;">
         </view>
-        <view wx:if='{{awardsConfig.awards.length==3}}' class="canvas-item2-after"
-          style="background-color:{{item.color}};width:{{size/2}}rpx;height:{{size/2}}rpx;transform-origin: {{size/2}}rpx {{size/2}}rpx">
+        <view wx:if="{{ lottery.awards.length === 3 }}" class="canvas-item-after" style="background-color: {{ item.color }}; width: {{ size / 2 }}rpx; height: {{ size / 2 }}rpx;   transform-origin: {{ size / 2 }}rpx {{ size / 2 }}rpx;">
         </view>
       </view>
     </view>
 
     <!-- 选项内容 -->
-    <view class="gb-wheel-list">
-      <view class="gb-wheel-item" data-index="{{index}}" wx:for="{{awardsConfig.awards}}" wx:key='key'>
-        <view class="gb-wheel-icontent"
-          style="height:262rpx;overflow:hidden;font-size:{{item.name.length>9?'20':'26'}}rpx;line-height:{{item.name.length>9?'20':'26'}}rpx;width:30rpx;padding-top:5rpx;transform: rotate({{index*turnNum}}turn);transform-origin: 50% {{size/2-2}}rpx">
-          <text style='word-break:break-all; font-size: 30rpx; line-height: 35rpx;'>{{item.name}}</text>
+    <view class="wheel-list">
+      <view class="wheel-item" data-index="{{ index }}" wx:for="{{ lottery.awards }}" wx:key='key'>
+        <view class="wheel-item-content" style="height: 262rpx; overflow: hidden; font-size: {{ item.name.length > 9 ? '20' : '26' }}rpx; line-height: {{ item.name.length > 9 ? '20' : '26' }}rpx; width: 30rpx; padding-top: 5rpx; transform: rotate({{ index * turnNum }}turn); transform-origin: 50% {{ size / 2 - 2 }}rpx;">
+          <text style="word-break: break-all; font-size: 30rpx; line-height: 35rpx;">{{item.name}}</text>
         </view>
       </view>
     </view>
   </view>
 
-  <view class="img-container" style='width:100%;height:{{size}}rpx;'>
-    <!-- 转盘中间的按钮 -->
-    <image bindtap="_zhuan" src='/static/images/go.png'
-      style='width:{{size/4.4}}rpx;display:{{block1}};margin-top:16rpx' mode='widthFix'></image>
-    <image src='/static/images/go.png' style='width:{{size/4.4}}rpx;display:{{block2}};margin-top:16rpx'
-      mode='widthFix'></image>
-    <image bindtap="reset" src='/static/images/reset.png'
-      style='width:{{size/4.4}}rpx;display:{{block3}};margin-top:16rpx' mode='widthFix'></image>
-    <image src='/static/images/reset.png' style='width:{{size/4.4}}rpx;display:{{block4}};margin-top:16rpx'
-      mode='widthFix'></image>
+  <!-- 转盘中间的按钮 -->
+  <view class="img-container" style="width: 100%; height: {{ size }}rpx;">
+    <image bindtap="_zhuan" src='/static/images/go.png' style="width: {{ size / 4.4 }}rpx; display: {{ block1 }}; margin-top: 16rpx" mode="widthFix"></image>
+    <image src='/static/images/go.png' style="width: {{ size / 4.4 }}rpx; display: {{ block2 }}; margin-top: 16rpx" mode="widthFix"></image>
+
+    <image bindtap="reset" src='/static/images/reset.png' style="width: {{ size / 4.4 }}rpx; display: {{ block3 }}; margin-top: 16rpx" mode="widthFix"></image>
+    <image src='/static/images/reset.png' style="width: {{ size / 4.4 }}rpx; display: {{ block4 }}; margin-top: 16rpx" mode="widthFix"></image>
   </view>
 </view>

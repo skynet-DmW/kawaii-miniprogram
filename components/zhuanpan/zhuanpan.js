@@ -1,4 +1,3 @@
-// components/zhuanpan/zhuanpan.js
 //创建并返回内部 audio 上下文 innerAudioContext 对象
 const start = wx.createInnerAudioContext();
 const mid = wx.createInnerAudioContext();
@@ -14,26 +13,17 @@ Component({
    * 用于组件自定义设置   组件的对外属性
    */
   properties: {
-    myProperty: {    // 属性名        myProperty2: String, 简化的定义方式
-      type: String, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
-      value: '',    // 属性默认 初始值（可选），如果未指定则会根据类型选择一个
-      observer: function (newVal, oldVal, changedPath) {
-        // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
-        // 通常 newVal 就是新设置的数据， oldVal 是旧数据
-      }
-    },
-
     probability: {
       type: Boolean, // 概率开关，默认false 随机
       value: false
     },
 
-    musicflg: {
+    musicFlag: {
       type: Boolean, // 转盘声音开关，默认true
       value: true
     },
 
-    fastJuedin: {
+    quickStart: {
       type: Boolean, // 快速转动转盘的开关，默认false
       value: false
     },
@@ -48,41 +38,17 @@ Component({
       value: 600
     },
 
-    zhuanpanArr: { // 可以切换的转盘选项, 支持多个
-      type: Array,
-      value: [
-        {
-          id: 0,
-          option: '转盘的标题名称',
-          awards: [
-            {
-              id: 0,
-              name: "最多17个选项",  // 选项名
-              color: 'red',         // 选项的背景颜色
-              probability: 10       // 概率 0代表永远也转不到这个选项，数字越大概率也就越大
-            },
-            {
-              id: 1,
-              name: "选项最多填13字", // 超过9个字时字体会变小点
-              color: 'green',
-              probability: 10
-            }
-          ]
-        }
-      ]
-    },
-
     // 限制：最多17个选项， 单个选项最多填10-13个字,多余部分会隐藏
-    awardsConfig: { // 默认的当前转盘选项 
+    lottery: { // 默认的当前转盘选项 
       type: Object,
       value: {
         option: '我的小决定？',
         awards: [
           {
             id: 0,
-            name: "最多17个选项",
-            color: 'red',
-            probability: 0
+            name: "最多17个选项",  // 选项名
+            color: 'red',         // 选项的背景颜色
+            probability: 10       // 概率 0代表永远也转不到这个选项，数字越大概率也就越大
           },
           {
             id: 1,
@@ -107,8 +73,8 @@ Component({
    */
   data: {
     animationData: {}, // 转盘动画
-    zhuanflg: false,   // 转盘是否可以点击切换的标志位
-    fastTime: 7600,    // 转盘快速转动的时间
+    startFlag: false,   // 转盘是否可以点击切换的标志位
+    quickTime: 7600,    // 转盘快速转动的时间
     slowTime: 3900,    // 转盘慢速转动的时间
     runDegs: 0,        // 转盘旋转了多少圈
     timer: null,       // 清除转盘的时间clearTimeout(timer)
@@ -131,10 +97,7 @@ Component({
     mid.src = '/static/audio/start.mp3';     // 快速决定时，转盘开始转动的音乐
     stop.src = '/static/audio/stop.mp3';   // 转盘停止转动的音乐
 
-    this.setData({
-      awardsConfig: this.data.zhuanpanArr[0]
-    })
-    this.initAdards();
+    this.init();
   },
 
   /**
@@ -142,73 +105,69 @@ Component({
    * 更新属性和数据的方法与更新页面数据的方法类似
    */
   methods: {
-    /*
-     * 公有方法
-     */
-    //判断值是否为空
+    // 判断值是否为空
     isNull(str) {
-      if (str == null || str == undefined || str == '') {
+      if (str === null || str === undefined || str === '') {
         return true;
       } else {
         return false;
       }
     },
 
-    //初始化数据
-    initAdards() {
-      var that = this
-      let awardsConfig = that.data.awardsConfig;
-      if (!awardsConfig) {
+    // 初始化数据
+    init() {
+      let lottery = this.data.lottery;
+      console.log(lottery);
+      if (!lottery) {
         return
       }
-      var t = awardsConfig.awards.length;  // 选项长度
+      var t = lottery.awards.length;  // 选项长度
+
       var e = 1 / t, i = 360 / t, r = i - 90;
 
       for (var g = 0; g < t; g++) {
-        awardsConfig.awards[g].item2Deg = g * i + 90 - i / 2 + "deg";//当前下标 * 360/长度 + 90 - 360/长度/2
-        awardsConfig.awards[g].afterDeg = r + "deg";
-        awardsConfig.awards[g].opacity = '1';
+        lottery.awards[g].item2Deg = g * i + 90 - i / 2 + "deg";// 当前下标 * 360/长度 + 90 - 360/长度/2
+        lottery.awards[g].afterDeg = r + "deg";
+        lottery.awards[g].opacity = '1';
       }
 
-      that.setData({
+      this.setData({
         turnNum: e, // 页面的单位是turn
-        awardsConfig: awardsConfig,
+        lottery: lottery,
       })
-
-      that._change();//向父组件传出当前转盘的初始数据
     },
 
     //重置转盘
     reset() {
-      var that = this, awardsConfig = that.data.awardsConfig;
+      var lottery = this.data.lottery;
       var animation = wx.createAnimation({
         duration: 1,
         timingFunction: "ease"
       });
-      that.animation = animation;
-      animation.rotate(0).step(), that.data.runDegs = 0;
+      this.animation = animation;
+      animation.rotate(0).step(), this.data.runDegs = 0;
 
-      that.setData({
+      this.setData({
         animationData: animation.export(),
         block3: 'none',
         block4: 'block'
       })
 
-      for (let x in awardsConfig.awards) {
-        awardsConfig.awards[x].opacity = '1';
+      for (let x in lottery.awards) {
+        lottery.awards[x].opacity = '1';
       }
 
-      that.setData({
+      this.setData({
         block1: 'block',
         block4: 'none',
-        awardsConfig: awardsConfig,
+        lottery: lottery,
       })
 
       // setTimeout(function () {
-      //   that.setData({
+      //   this.setData({
       //     block1: 'block',
       //     block4: 'none',
-      //     awardsConfig: awardsConfig,
+      //     lottery: lottery,
       //   })
       // }, 300)
     },
@@ -219,14 +178,14 @@ Component({
     //flag: 当转盘在转动过程中如果你想停止的话，可以传个true值，默认可不传
     switchZhuanpan(data, flag) {
       this.setData({
-        awardsConfig: data,
+        lottery: data,
         block1: 'block',
         block1: 'none',
         block3: 'none',
         block4: 'none',
-        zhuanflg: false,
+        startFlag: false,
       })
-      this.initAdards();
+      this.init();
 
       if (flag) {
         this.reset();
@@ -248,81 +207,81 @@ Component({
 
     // GO转盘开始转动
     _zhuan() {
-      var that = this, awardsConfig = that.data.awardsConfig, runDegs = that.data.runDegs;
+      var lottery = this.data.lottery, runDegs = this.data.runDegs;
       //>>> 是无符号移位运算符
-      var r = Math.random() * awardsConfig.awards.length >>> 0, runNum = 8;
+      var r = Math.random() * lottery.awards.length >>> 0, runNum = 8;
 
 
       /*=============不重复抽取=============*/
-      if (that.data.repeat) {
-        r = that._queryRepeat(r);
+      if (this.data.repeat) {
+        r = this._queryRepeat(r);
       } else {
         wx.removeStorageSync('repeatArr');
 
-        console.log('是否开启了概率？？？', that.data.probability);
+        console.log('是否开启了概率？？？', this.data.probability);
         //开启概率 probability这属性必须要传个ture
-        if (that.data.probability) {
-          r = that._openProbability();
+        if (this.data.probability) {
+          r = this._openProbability();
         }
       }
       /*=============不重复抽取=============*/
 
 
       console.log('当前答案选项的下标=====', r);
-      setTimeout(function () {
+      setTimeout(() => {
         //转盘开始转动音乐
-        that.data.musicflg ? that.data.fastJuedin ? mid.play() : start.play() : '';
+        this.data.musicFlag ? this.data.quickStart ? mid.play() : start.play() : '';
 
         //要转多少度deg
-        runDegs = runDegs || 0, runDegs = runDegs + (360 - runDegs % 360) + (2160 - r * (360 / awardsConfig.awards.length));
+        runDegs = runDegs || 0, runDegs = runDegs + (360 - runDegs % 360) + (2160 - r * (360 / lottery.awards.length));
 
         var animation = wx.createAnimation({
-          duration: that.data.fastJuedin ? that.data.slowTime : that.data.fastTime,
+          duration: this.data.quickStart ? this.data.slowTime : this.data.quickTime,
           timingFunction: "ease"
         });
-        that.animation = animation;
+        this.animation = animation;
 
         //这动画执行的是差值 
         //如果第一次写rotate（360） 那么第二次再写rotate（360）将不起效果
         animation.rotate(runDegs).step(), 0 == r && (runDegs = 0);
 
-        that.setData({
+        this.setData({
           animationData: animation.export(),
           block1: 'none',
           block2: 'block',
-          zhuanflg: true,
+          startFlag: true,
         })
 
-        that._setatZhuan(true);
+        this._setatZhuan(true);
       }, 100);
 
-      that.setData({
-        timer: setTimeout(function () {
+      this.setData({
+        timer: setTimeout(() => {
           //转盘停止后，答案区域高亮显示，其他区域增加透明度
-          for (let x in awardsConfig.awards) {
+          for (let x in lottery.awards) {
             if (x != r) {
-              awardsConfig.awards[x].opacity = '0.3';
+              lottery.awards[x].opacity = '0.3';
             } else {
-              awardsConfig.awards[x].opacity = '1';
+              lottery.awards[x].opacity = '1';
             }
           }
 
           //转盘停止后的音乐
           start.stop()
           mid.stop()
-          !that.data.musicflg ? '' : stop.play();
+          !this.data.musicFlag ? '' : stop.play();
 
-          that.setData({
+          this.setData({
             animationData: {},
-            s_awards: awardsConfig.awards[r].name,//最终选中的结果
-            awardsConfig: awardsConfig,
+            s_awards: lottery.awards[r].name,//最终选中的结果
+            lottery: lottery,
             block2: 'none',
             block3: 'block',
-            zhuanflg: false,
+            startFlag: false,
           })
-          that._myAwards();
-          that._setatZhuan(false);
-        }, that.data.fastJuedin ? that.data.slowTime : that.data.fastTime)
+          this._myAwards();
+          this._setatZhuan(false);
+        }, this.data.quickStart ? this.data.slowTime : this.data.quickTime)
       })
     },
 
@@ -331,7 +290,7 @@ Component({
     // 传的数越大概率越大
     // 传入0的话就永远摇不到这个选项
     _openProbability() {
-      var that = this, awards = that.data.awardsConfig.awards, arr = [];
+      var awards = this.data.lottery.awards, arr = [];
       //5, 5, 20, 10 ,30 ,30, 0
       for (let i in awards) {
         if (awards[i].probability != 0) {
@@ -348,12 +307,12 @@ Component({
     //不重复抽取
     //r:随机数 当前选项进行随机
     _queryRepeat(r) {
-      var that = this, flag = true, repeatArr = wx.getStorageSync('repeatArr'), repeatArr2 = [], awardsConfig = that.data.awardsConfig;
-      if (that.isNull(repeatArr)) {
+      var flag = true, repeatArr = wx.getStorageSync('repeatArr'), repeatArr2 = [], lottery = this.data.lottery;
+      if (this.isNull(repeatArr)) {
         repeatArr2.push(r), wx.setStorageSync('repeatArr', repeatArr2);
         return r;
       } else {
-        var len = awardsConfig.awards.length, r = Math.random() * len >>> 0;
+        var len = lottery.awards.length, r = Math.random() * len >>> 0;
         for (let i in repeatArr) {
           if (r == repeatArr[i]) {
             flag = false;
@@ -362,7 +321,7 @@ Component({
               repeatArr2.push(r), wx.setStorageSync('repeatArr', repeatArr2);
               return r;
             } else {
-              return that._queryRepeat();//递归调用
+              return this._queryRepeat();//递归调用
             }
           }
         }
@@ -371,11 +330,6 @@ Component({
           return r;
         }
       }
-    },
-
-    //初始化数据时向外传的参
-    _change() {
-      this.triggerEvent('myData', this.data.awardsConfig);// 向父组件传出当前转盘的数组数据
     },
 
     //当前转盘的结果

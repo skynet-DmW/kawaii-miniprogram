@@ -2,16 +2,14 @@
   <image class="bg" src="/static/images/bg.png"></image>
   <view class="zhuanpan">
     <!-- 引用组件↓↓↓ -->
-    <zhuanpan id='zhuanpan' bind:myData='getData' bind:myAwards="getAwards" bind:startZhuan="startZhuan" size='{{size}}'
-      musicflg='{{musicflg}}' fastJuedin='{{fastJuedin}}' repeat='{{repeat}}' zhuanpanArr='{{xiaojuedingArr}}'
-      awardsConfig='{{awardsConfig}}'></zhuanpan>
+    <zhuanpan id='zhuanpan' bind:myAwards="getAwards" bind:startZhuan="startZhuan" size='{{size}}' musicFlag='{{musicFlag}}' quickStart='{{quickStart}}' repeat='{{repeat}}' lottery='{{lottery}}'></zhuanpan>
     <!-- 引用组件↑↑↑ -->
   </view>
 
   <view class="tool-container">
     <view>
       <text>声音：</text>
-      <switch color="#d46877" checked="{{musicflg}}" type='switch' bindchange="musicChange" />
+      <switch color="#d46877" checked="{{musicFlag}}" type='switch' bindchange="musicChange" />
     </view>
     <view class="tool-item" bindtap="toAdd">
       <text>自定义</text>
