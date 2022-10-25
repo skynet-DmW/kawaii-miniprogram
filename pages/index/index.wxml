@@ -2,7 +2,7 @@
   <image class="bg" src="/static/images/bg.png"></image>
   <view class="zhuanpan">
     <!-- 引用组件↓↓↓ -->
-    <zhuanpan id='zhuanpan' bind:myAwards="getAwards" bind:startZhuan="startZhuan" size='{{size}}' musicFlag='{{musicFlag}}' quickStart='{{quickStart}}' repeat='{{repeat}}' lottery='{{lottery}}'></zhuanpan>
+    <zhuanpan id='zhuanpan' bind:awards="getAwards" bind:startLucky="startLucky" size='{{size}}' musicFlag='{{musicFlag}}' quickStart='{{quickStart}}' repeat='{{repeat}}' lottery='{{lottery}}'></zhuanpan>
     <!-- 引用组件↑↑↑ -->
   </view>
 
@@ -17,18 +17,17 @@
     <view class="tool-item" bindtap="toDiy">
       <text>我的</text>
     </view>
+    <!-- <view>
+      <text>不重复抽取</text>
+      <switch color="#d46877" checked="{{repeat}}" type='switch' bindchange="repeatChange" />
+    </view>
+    <view>
+      <text>快速决定</text>
+      <switch color="#d46877" checked="{{quickStart}}" type='switch' bindchange="quickStartChange" />
+    </view>
+    <view>
+      <text>概率</text>
+      <switch color="#d46877" checked="{{probability}}" type='switch' bindchange="probabilityChange" />
+    </view> -->
   </view>
-
-  <!-- <view style='width:100%;margin:5px;text-align:center;'>
-    转盘声音
-    <switch type='switch' bindchange="switch1Change1" />
-    不重复抽取
-    <switch type='switch' bindchange="switch1Change2" />
-  </view>
-  <view style='width:100%;margin:5px;text-align:center;'>
-    快速决定
-    <switch type='switch' bindchange="switch1Change3" />
-    概率
-    <switch type='switch' bindchange="switch1Change4" />
-  </view> -->
 </view>

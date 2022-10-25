@@ -23,8 +23,8 @@ Page({
     // 可以这样调用 示例：this.zhuanpan.switchZhuanpan(data); 
     // 上面这方法可用来切换转盘选项数据，参数可以看组件构造器中的switchZhuanpan方法
     this.zhuanpan = this.selectComponent("#zhuanpan");
-    
-    this.getAwardsData()
+
+    this.getData()
     this.getConfig()
   },
 
@@ -78,7 +78,7 @@ Page({
 
   },
 
-  //接收当前转盘结束后的答案选项
+  // 接收当前转盘结束后的答案选项
   getAwards(e) {
     wx.showToast({
       title: e.detail,
@@ -89,14 +89,14 @@ Page({
     })
   },
 
-  //开始转动或者结束转动
-  startZhuan(e) {
+  // 开始转动或者结束转动
+  startLucky(e) {
     this.setData({
       startFlag: e.detail ? true : false
     })
   },
 
-  //转盘声音
+  // 转盘声音
   musicChange(e) {
     var value = e.detail.value;
     if (this.data.startFlag) {
@@ -111,8 +111,8 @@ Page({
     wx.setStorageSync(app.key.music, value)
   },
 
-  //不重复抽取
-  switch1Change2(e) {
+  // 不重复抽取
+  repeatChange(e) {
     var value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
@@ -127,8 +127,8 @@ Page({
     }
   },
 
-  //快速决定
-  switch1Change3(e) {
+  // 快速决定
+  quickStartChange(e) {
     var value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
@@ -143,8 +143,8 @@ Page({
     }
   },
 
-  //概率 == 如果不重复抽取开启的话 概率是无效的
-  switch1Change4(e) {
+  // 概率 == 如果不重复抽取开启的话 概率是无效的
+  probabilityChange(e) {
     var value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
@@ -171,7 +171,7 @@ Page({
     })
   },
 
-  getAwardsData() {
+  getData() {
     const lottery = api.getZpItem()
     this.setData({
       lottery

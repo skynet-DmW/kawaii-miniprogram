@@ -118,7 +118,7 @@ Component({
     init() {
       let lottery = this.data.lottery;
       console.log(lottery);
-      if (!lottery) {
+      if (!lottery || Object.keys(lottery).length < 1) {
         return
       }
       var t = lottery.awards.length;  // 选项长度
@@ -172,10 +172,10 @@ Component({
       // }, 300)
     },
 
-    //父组件需要切换当前转盘的选项
-    //如果有需要切换不同转盘的选项时，可以调用这方法
-    //data: 转盘的数据
-    //flag: 当转盘在转动过程中如果你想停止的话，可以传个true值，默认可不传
+    // 父组件需要切换当前转盘的选项
+    // 如果有需要切换不同转盘的选项时，可以调用这方法
+    // data: 转盘的数据
+    // flag: 当转盘在转动过程中如果你想停止的话，可以传个true值，默认可不传
     switchZhuanpan(data, flag) {
       this.setData({
         lottery: data,
@@ -197,8 +197,6 @@ Component({
       }
     },
 
-
-
     /*
     * 内部私有方法建议以下划线开头
     * triggerEvent 用于触发事件,过triggerEvent来给父组件传递信息的
@@ -206,7 +204,7 @@ Component({
     */
 
     // GO转盘开始转动
-    _zhuan() {
+    startLucky() {
       var lottery = this.data.lottery, runDegs = this.data.runDegs;
       //>>> 是无符号移位运算符
       var r = Math.random() * lottery.awards.length >>> 0, runNum = 8;
@@ -279,7 +277,7 @@ Component({
             block3: 'block',
             startFlag: false,
           })
-          this._myAwards();
+          this._awards();
           this._setatZhuan(false);
         }, this.data.quickStart ? this.data.slowTime : this.data.quickTime)
       })
@@ -332,14 +330,14 @@ Component({
       }
     },
 
-    //当前转盘的结果
-    _myAwards() {
-      this.triggerEvent('myAwards', this.data.s_awards)
+    // 当前转盘的结果
+    _awards() {
+      this.triggerEvent('awards', this.data.s_awards)
     },
 
-    //转盘开始转动或者结速转动后的要传的值
+    // 转盘开始转动或者结速转动后的要传的值
     _setatZhuan(e) {
-      this.triggerEvent('startZhuan', e);
+      this.triggerEvent('startLucky', e);
     },
 
   }
