@@ -156,3 +156,8 @@ export function getMusicFlag() {
   return getApp().globalData.musicFlag || true
 }
 
+// 修改音乐配置
+export function putMusicFlag(musicFlag) {
+  return getApp().globalData.musicFlag = musicFlag
+}
+

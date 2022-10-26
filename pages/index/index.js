@@ -108,7 +108,7 @@ Page({
     this.setData({
       musicFlag: value
     })
-    wx.setStorageSync(app.key.music, value)
+    api.putMusicFlag(value)
   },
 
   // 不重复抽取
