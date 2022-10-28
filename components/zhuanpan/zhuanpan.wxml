@@ -22,10 +22,7 @@
 
   <!-- 转盘中间的按钮 -->
   <view class="img-container" style="width: 100%; height: {{ size }}rpx;">
-    <image bindtap="startLucky" src='/static/images/go.png' style="width: {{ size / 4.4 }}rpx; display: {{ block1 }}; margin-top: 16rpx" mode="widthFix"></image>
-    <image src='/static/images/go.png' style="width: {{ size / 4.4 }}rpx; display: {{ block2 }}; margin-top: 16rpx" mode="widthFix"></image>
-
-    <image bindtap="reset" src='/static/images/reset.png' style="width: {{ size / 4.4 }}rpx; display: {{ block3 }}; margin-top: 16rpx" mode="widthFix"></image>
-    <image src='/static/images/reset.png' style="width: {{ size / 4.4 }}rpx; display: {{ block4 }}; margin-top: 16rpx" mode="widthFix"></image>
+    <image bindtap="startLucky" src='/static/images/go.png' style="width: {{ size / 4.4 }}rpx; display: {{ startShow }}; margin-top: 16rpx" mode="widthFix"></image>
+    <image bindtap="reset" src='/static/images/reset.png' style="width: {{ size / 4.4 }}rpx; display: {{ resetShow }}; margin-top: 16rpx" mode="widthFix"></image>
   </view>
 </view>

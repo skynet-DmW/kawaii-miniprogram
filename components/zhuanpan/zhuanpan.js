@@ -2,6 +2,7 @@
 const start = wx.createInnerAudioContext();
 const mid = wx.createInnerAudioContext();
 const stop = wx.createInnerAudioContext();
+const throttle = require('../../utils/util.js').throttle
 
 Component({
   options: {
@@ -78,10 +79,8 @@ Component({
     slowTime: 3900,    // 转盘慢速转动的时间
     runDegs: 0,        // 转盘旋转了多少圈
     timer: null,       // 清除转盘的时间clearTimeout(timer)
-    block1: 'block',   // 控制显示或隐藏转盘中心的图片
-    block2: 'none',
-    block3: 'none',
-    block4: 'none'
+    startShow: 'block',
+    resetShow: 'none'
   },
 
   //组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData
@@ -149,8 +148,6 @@ Component({
 
       this.setData({
         animationData: animation.export(),
-        block3: 'none',
-        block4: 'block'
       })
 
       for (let x in lottery.awards) {
@@ -158,18 +155,10 @@ Component({
       }
 
       this.setData({
-        block1: 'block',
-        block4: 'none',
+        startShow: 'block',
+        resetShow: 'none',
         lottery: lottery,
       })
-
-      // setTimeout(function () {
-      //   this.setData({
-      //     block1: 'block',
-      //     block4: 'none',
-      //     lottery: lottery,
-      //   })
-      // }, 300)
     },
 
     // 父组件需要切换当前转盘的选项
@@ -179,10 +168,8 @@ Component({
     switchZhuanpan(data, flag) {
       this.setData({
         lottery: data,
-        block1: 'block',
-        block1: 'none',
-        block3: 'none',
-        block4: 'none',
+        startShow: 'block',
+        resetShow: 'none',
         startFlag: false,
       })
       this.init();
@@ -204,7 +191,8 @@ Component({
     */
 
     // GO转盘开始转动
-    startLucky() {
+    // handleOnPayMini: throttle(async function () {
+    startLucky: throttle(function () {
       var lottery = this.data.lottery, runDegs = this.data.runDegs;
       //>>> 是无符号移位运算符
       var r = Math.random() * lottery.awards.length >>> 0, runNum = 8;
@@ -245,8 +233,6 @@ Component({
 
         this.setData({
           animationData: animation.export(),
-          block1: 'none',
-          block2: 'block',
           startFlag: true,
         })
 
@@ -273,16 +259,15 @@ Component({
             animationData: {},
             s_awards: lottery.awards[r].name,//最终选中的结果
             lottery: lottery,
-            block2: 'none',
-            block3: 'block',
+            startShow: 'none',
+            resetShow: 'block',
             startFlag: false,
           })
           this._awards();
           this._setatZhuan(false);
         }, this.data.quickStart ? this.data.slowTime : this.data.quickTime)
       })
-    },
-
+    }),
 
     // 开启概率 
     // 传的数越大概率越大

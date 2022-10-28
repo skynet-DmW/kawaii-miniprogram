@@ -14,6 +14,41 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
+
+//节流
+const throttle = (fn, wait = 800) => {
+  let prev = Date.now();
+  return function () {
+    const context = this;
+    const args = arguments;
+    const now = Date.now();
+    // console.log(now - prev > wait)
+    if (now - prev > wait) {
+      fn.apply(context, args);
+      prev = Date.now();
+    }
+  }
+}
+
+//防抖
+const debounce = (func, wait = 500) => {
+  // wait：500ms；func：被频繁触发的事件
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    const later = () => {
+      timeout = null;
+      func.apply(context, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  }
+}
+
+
 module.exports = {
-  formatTime
+  formatTime,
+  throttle,
+  debounce
 }
