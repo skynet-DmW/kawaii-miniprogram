@@ -43,7 +43,7 @@ Component({
     lottery: { // 默认的当前转盘选项 
       type: Object,
       value: {
-        option: '我的小决定？',
+        title: '我的小决定？',
         awards: [
           {
             id: 0,
@@ -80,7 +80,8 @@ Component({
     runDegs: 0,        // 转盘旋转了多少圈
     timer: null,       // 清除转盘的时间clearTimeout(timer)
     startShow: 'block',
-    resetShow: 'none'
+    resetShow: 'none',
+    awards: null
   },
 
   //组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData
@@ -257,7 +258,7 @@ Component({
 
           this.setData({
             animationData: {},
-            s_awards: lottery.awards[r].name,//最终选中的结果
+            awards: lottery.awards[r],//最终选中的结果
             lottery: lottery,
             startShow: 'none',
             resetShow: 'block',
@@ -317,7 +318,7 @@ Component({
 
     // 当前转盘的结果
     _awards() {
-      this.triggerEvent('awards', this.data.s_awards)
+      this.triggerEvent('awards', this.data.awards)
     },
 
     // 转盘开始转动或者结速转动后的要传的值

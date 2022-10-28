@@ -1,4 +1,5 @@
-const app = getApp()
+import * as api from '../../api/index'
+
 Page({
 
   /**
@@ -67,43 +68,34 @@ Page({
   },
 
   getZpList() {
-    const zpList = wx.getStorageSync(app.key.zpList)
+    const zpList = api.getZpList()
+    console.log(zpList);
     this.setData({
-      zpList: zpList || []
+      zpList
     })
   },
 
   add(e) {
-    const index = e.currentTarget.dataset.index
-    if (index > -1) {
-      wx.navigateTo({
-        url: `/pages/add/add?index=${index}`,
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/add/add?index',
-      })
-    }
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/add/add?id=${id}`,
+    })
   },
 
   onEvent(e) {
-    const index = e.currentTarget.dataset.index
-    let that = this;
+    const id = e.currentTarget.dataset.id
     // 触摸时间距离页面打开的毫秒数  
-    let touchTime = that.data.touchEnd - that.data.touchStart;
+    let touchTime = this.data.touchEnd - this.data.touchStart;
     if (touchTime > 350) {
-      this.showDel(index)
+      this.showDel(id)
     } else {
-      this.toIndex(index)
+      this.toIndex(id)
     }
   },
 
-  toIndex(index) {
-    const item = this.data.zpList[index]
-    wx.setStorageSync(app.key.zpItem, item)
-    const jsonItem = JSON.stringify(item)
+  toIndex(id) {
     wx.navigateTo({
-      url: `/pages/index/index?item=${jsonItem}`,
+      url: `/pages/index/index?id=${id}`,
     })
   },
 

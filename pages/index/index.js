@@ -1,4 +1,3 @@
-const app = getApp()
 import * as api from '../../api/index'
 
 Page({
@@ -9,8 +8,7 @@ Page({
     quickStart: false,// 快速决定
     repeat: false,// 不重复抽取
     probability: false,// 概率
-    s_awards: '',// 结果
-    option: '标题',
+    awards: '',// 结果
     // 更改数据可以更改这属性，格式要像下面这样写才行
     lottery: {}
   },
@@ -24,7 +22,7 @@ Page({
     // 上面这方法可用来切换转盘选项数据，参数可以看组件构造器中的switchZhuanpan方法
     this.zhuanpan = this.selectComponent("#zhuanpan");
 
-    this.getData()
+    this.getData(options.id)
     this.getConfig()
   },
 
@@ -80,12 +78,13 @@ Page({
 
   // 接收当前转盘结束后的答案选项
   getAwards(e) {
+    const awards = e.detail
     wx.showToast({
-      title: e.detail,
+      title: awards.name,
       icon: 'none'
     })
     this.setData({
-      s_awards: e.detail,
+      awards,
     })
   },
 
@@ -171,8 +170,8 @@ Page({
     })
   },
 
-  getData() {
-    const lottery = api.getZpItem()
+  getData(id) {
+    const lottery = api.getZpItem(id)
     this.setData({
       lottery
     })

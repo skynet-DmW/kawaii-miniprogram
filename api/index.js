@@ -2,7 +2,8 @@ export function getZpList() {
   const zpList = getApp().globalData.zpList
   if (zpList.length < 1) {
     zpList.push({
-      option: '今天吃什么？',// 转盘的标题名称
+      id: 1,
+      title: '今天吃什么？',// 转盘的标题名称
       awards: [
         {
           id: 0, // id递增
@@ -49,7 +50,8 @@ export function getZpList() {
       ]
     })
     zpList.push({
-      option: '喝什么？',// 转盘的标题名称
+      id: 2,
+      title: '喝什么？',// 转盘的标题名称
       awards: [
         {
           id: 0, // id递增
@@ -96,7 +98,8 @@ export function getZpList() {
       ]
     })
     zpList.push({
-      option: '玩什么？',// 转盘的标题名称
+      id: 3,
+      title: '玩什么？',// 转盘的标题名称
       awards: [
         {
           id: 0, // id递增
@@ -146,9 +149,11 @@ export function getZpList() {
   return zpList;
 }
 
-export function getZpItem() {
-  const zpItem = getApp().globalData.zpItem
-  return Object.keys(zpItem).length === 0 ? this.getZpList()[0] : zpItem
+export function getZpItem(id) {
+  const zpList = this.getZpList()
+  const s = zpList.find((item)=> item.id === id)
+  console.log(s)
+  return zpItem && Object.keys(zpItem).length === 0 ? this.getZpList()[0] : zpItem
 }
 
 // 获取音乐配置

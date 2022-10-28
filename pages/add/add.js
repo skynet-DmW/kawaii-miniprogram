@@ -8,15 +8,15 @@ Page({
   data: {
     title: '',
     conLists: [],
-    index: -1
+    id: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const index = options.index
-    this.getData(index)
+    const id = options.id
+    this.getData(id)
   },
 
   /**
