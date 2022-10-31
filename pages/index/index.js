@@ -22,7 +22,7 @@ Page({
     // 上面这方法可用来切换转盘选项数据，参数可以看组件构造器中的switchZhuanpan方法
     this.zhuanpan = this.selectComponent("#zhuanpan");
 
-    this.getData(options.id)
+    this.getData(Number(options.zpId))
     this.getConfig()
   },
 
@@ -170,8 +170,8 @@ Page({
     })
   },
 
-  getData(id) {
-    const lottery = api.getZpItem(id)
+  getData(zpId) {
+    const lottery = api.getZpItem(zpId)
     this.setData({
       lottery
     })

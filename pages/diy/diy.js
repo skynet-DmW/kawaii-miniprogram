@@ -7,8 +7,6 @@ Page({
    */
   data: {
     zpList: [],
-    touchStart: 0,
-    touchEnd: 0
   },
 
   /**
@@ -69,43 +67,32 @@ Page({
 
   getZpList() {
     const zpList = api.getZpList()
-    console.log(zpList);
     this.setData({
       zpList
     })
   },
 
   add(e) {
-    const id = e.currentTarget.dataset.id
+    const zpId = e.currentTarget.dataset.zpId
     wx.navigateTo({
-      url: `/pages/add/add?id=${id}`,
+      url: `/pages/add/add?zpId=${zpId}`,
     })
   },
 
-  onEvent(e) {
-    const id = e.currentTarget.dataset.id
-    // 触摸时间距离页面打开的毫秒数  
-    let touchTime = this.data.touchEnd - this.data.touchStart;
-    if (touchTime > 350) {
-      this.showDel(id)
-    } else {
-      this.toIndex(id)
-    }
-  },
-
-  toIndex(id) {
+  toIndex(e) {
+    const zpId = e.currentTarget.dataset.zpId
     wx.navigateTo({
-      url: `/pages/index/index?id=${id}`,
+      url: `/pages/index/index?zpId=${zpId}`,
     })
   },
 
-  showDel(index) {
+  showDel(zpId) {
     const length = this.data.zpList.length
     if (length < 2) {
-      wx.showToast({
-        title: '最后一个不可以删除哦~',
-        icon: 'none'
-      })
+      // wx.showToast({
+      //   title: '最后一个不可以删除哦~',
+      //   icon: 'none'
+      // })
       return
     }
     wx.showModal({
@@ -114,34 +101,21 @@ Page({
       confirmColor: '#d46877',
       success: res => {
         if (res.confirm) {
-          this.del(index)
+          this.del(zpId)
         }
       }
     })
   },
 
-  del(index) {
-    let zpList = wx.getStorageSync(app.key.zpList)
-    zpList.splice(index, 1);
-    wx.setStorageSync(app.key.zpList, zpList)
-    this.setData({
-      zpList
-    })
+  del(zpId) {
+    api.delZpItem(zpId)
+    this.getZpList()
   },
 
-  //按下事件开始  
-  mytouchstart(e) {
-    let that = this;
-    that.setData({
-      touchStart: e.timeStamp
-    })
+  // 手指触摸后，超过350ms再离开，如果指定了事件回调函数并触发了这个事件，tap事件将不被触发
+  onLongPress(e) {
+    const zpId = e.currentTarget.dataset.zpId
+    this.showDel(zpId)
   },
 
-  //按下事件结束  
-  mytouchend(e) {
-    let that = this;
-    that.setData({
-      touchEnd: e.timeStamp
-    })
-  },
 })
