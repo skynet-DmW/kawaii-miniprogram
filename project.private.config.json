@@ -9,6 +9,7 @@
           "name": "pages/add/add",
           "pathName": "pages/add/add",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {

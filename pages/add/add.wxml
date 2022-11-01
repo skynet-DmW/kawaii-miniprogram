@@ -5,10 +5,10 @@
       <input model:value="{{title}}" placeholder="请输入大转盘标题~" />
     </view>
   </view>
-  <block wx:for="{{conLists}}" wx:key="index">
+  <block wx:for="{{awards}}" wx:key="index">
     <view class='template_title_list flex-x'>
       <view class="template_item">{{index + 1}}</view>
-      <input placeholder='请填写内容哦~ 最多10个字哦~' value="{{item}}" bindinput='changeConTitle' data-index='{{index}}'></input>
+      <input placeholder='请填写内容哦~ 最多10个字哦~' value="{{item.name}}" bindinput='changeInput' data-index='{{index}}'></input>
       <view class="template_item del" bindtap='del' data-index='{{index}}'>删除</view>
     </view>
   </block>

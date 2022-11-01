@@ -1,3 +1,4 @@
+import * as api from '../../api/index'
 const app = getApp()
 
 Page({
@@ -7,16 +8,18 @@ Page({
    */
   data: {
     title: '',
-    conLists: [],
-    id: 0
+    zpId: null,
+    awards: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const id = options.id
-    this.getData(id)
+    if (options.zpId) {
+      const zpId = Number(options.zpId)
+      this.getData(zpId)
+    }
   },
 
   /**
@@ -70,14 +73,35 @@ Page({
 
 
   /**
+   * 获取数据
+   * @param {Number} zpId 
+   */
+  getData(zpId) {
+    const zpItem = api.getZpItem(zpId)
+    if (zpItem) {
+      this.setData({
+        title: zpItem.title,
+        zpId,
+        awards: zpItem.awards
+      })
+    }
+  },
+
+
+  /**
    * 添加内容
    */
-  add(e) {
+  add() {
     // 点击添加按钮，就往数组里添加一条空数据
-    var _list = this.data.conLists;
-    _list.push("")
+    const awards = this.data.awards;
+    awards.push({
+      awardId: awards.length + 1,
+      name: "",
+      color: "",
+      probability: 10
+    })
     this.setData({
-      conLists: _list
+      awards
     })
   },
 
@@ -85,34 +109,24 @@ Page({
    * 删除内容
    */
   del(e) {
-    var idx = e.currentTarget.dataset.index;
-    var _list = this.data.conLists;
-    console.log(idx)
-    for (let i = 0; i < _list.length; i++) {
-      if (idx == i) {
-        _list.splice(idx, 1)
-      }
-    }
+    const index = e.currentTarget.dataset.index;
+    const awards = this.data.awards;
+    awards.splice(index, 1)
     this.setData({
-      conLists: _list
+      awards
     })
   },
 
   /**
    * 获取输入的内容标题
    */
-  changeConTitle(e) {
-    var idx = e.currentTarget.dataset.index; //当前下标
-    var val = e.detail.value; //当前输入的值
-    var _list = this.data.conLists; //data中存放的数据
-
-    for (let i = 0; i < _list.length; i++) {
-      if (idx == i) {
-        _list[i] = val //将当前输入的值放到数组中对应的位置
-      }
-    }
+  changeInput(e) {
+    const index = e.currentTarget.dataset.index; //当前下标
+    const val = e.detail.value; //当前输入的值
+    const awards = this.data.awards; //data中存放的数据
+    awards[index].name = val //将当前输入的值放到数组中对应的位置
     this.setData({
-      conLists: _list
+      awards
     })
   },
 
@@ -120,7 +134,7 @@ Page({
    * 完成
    */
   submit() {
-    var title = this.data.title;
+    const title = this.data.title;
     if (!title) {
       wx.showToast({
         title: '请填写标题~',
@@ -128,23 +142,24 @@ Page({
       })
       return;
     }
-    var _conLists = this.data.conLists;
-    if (_conLists.length < 2) {
+    const awards = this.data.awards;
+    if (awards.length < 2) {
       wx.showToast({
         title: '至少写两个哦~',
         icon: 'none'
       })
       return;
     }
-    for (let i = 0; i < _conLists.length; i++) {
-      if (!_conLists[i]) {
+    const colors = app.globalData.colors;
+    for (let i = 0; i < awards.length; i++) {
+      if (!awards[i]) {
         wx.showToast({
           title: '请输入第' + `${i + 1}` + '条的内容~',
           icon: 'none'
         })
         return;
       } else {
-        if (_conLists[i].length > 10) {
+        if (awards[i].length > 10) {
           wx.showToast({
             title: '第' + `${i + 1}` + '条最多10个字哦~',
             icon: 'none'
@@ -152,46 +167,21 @@ Page({
           return;
         }
       }
+      const color = colors.shift()
+      colors.push(color)
+      awards[i].color = color
     }
+    const zpId = this.data.zpId
     // 放入本地
-    let zpList = wx.getStorageSync(app.key.zpList)
-    if (zpList.length < 1) {
-      zpList = []
-      zpList.unshift({
-        key: this.data.title,
-        value: _conLists
-      })
-    } else {
-      const index = this.data.index
-      if (index > -1) {
-        zpList[index] = {
-          key: this.data.title,
-          value: _conLists
-        }
-      } else {
-        zpList.unshift({
-          key: this.data.title,
-          value: _conLists
-        })
-      }
-    }
-    wx.setStorageSync(app.key.zpList, zpList)
-    wx.setStorageSync(app.key.zpItem, zpList[0])
+    const zpItem = api.postZpItem({
+      zpId,
+      awards,
+      title,
+    })
     // 跳转
-    const jsonItem = JSON.stringify(zpList[0])
     wx.navigateTo({
-      url: `/pages/index/index?item=${jsonItem}`,
+      url: `/pages/index/index?zpId=${zpItem.zpId}`,
     })
   },
 
-  getData(index) {
-    const contentList = wx.getStorageSync(app.key.zpList)
-    if (contentList[index]) {
-      this.setData({
-        title: contentList[index].key,
-        conLists: contentList[index].value,
-        index
-      })
-    }
-  }
 })

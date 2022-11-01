@@ -5,12 +5,12 @@
         <text>名称：</text>
         <text>{{item.title}}</text>
       </view>
-      <view class="card-btn" catchtap="add" data-zp-id="{{item.zpId}}">
+      <view class="card-btn" catchtap="addOrUpdate" data-zp-id="{{item.zpId}}">
         <text>修改</text>
       </view>
     </view>
   </block>
-  <view class="btn" bindtap="add">
+  <view class="btn" bindtap="addOrUpdate">
     <text>自定义</text>
   </view>
 </view>

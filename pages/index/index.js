@@ -21,7 +21,6 @@ Page({
     // 可以这样调用 示例：this.zhuanpan.switchZhuanpan(data); 
     // 上面这方法可用来切换转盘选项数据，参数可以看组件构造器中的switchZhuanpan方法
     this.zhuanpan = this.selectComponent("#zhuanpan");
-
     this.getData(Number(options.zpId))
     this.getConfig()
   },
@@ -97,7 +96,7 @@ Page({
 
   // 转盘声音
   musicChange(e) {
-    var value = e.detail.value;
+    const value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
         title: '下一次转盘生效哦~',
@@ -112,7 +111,7 @@ Page({
 
   // 不重复抽取
   repeatChange(e) {
-    var value = e.detail.value;
+    const value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
         title: '当转盘停止转动后才有效',
@@ -128,7 +127,7 @@ Page({
 
   // 快速决定
   quickStartChange(e) {
-    var value = e.detail.value;
+    const value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
         title: '当转盘停止转动后才有效',
@@ -144,7 +143,7 @@ Page({
 
   // 概率 == 如果不重复抽取开启的话 概率是无效的
   probabilityChange(e) {
-    var value = e.detail.value;
+    const value = e.detail.value;
     if (this.data.startFlag) {
       wx.showToast({
         title: '当转盘停止转动后才有效',
@@ -171,10 +170,17 @@ Page({
   },
 
   getData(zpId) {
-    const lottery = api.getZpItem(zpId)
-    this.setData({
-      lottery
-    })
+    if (zpId) {
+      const lottery = api.getZpItem(zpId)
+      this.setData({
+        lottery
+      })
+    } else {
+      const lottery = api.getDefaultZpItem()
+      this.setData({
+        lottery
+      })
+    }
   },
 
   getConfig() {

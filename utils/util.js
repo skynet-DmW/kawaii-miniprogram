@@ -15,7 +15,7 @@ const formatNumber = n => {
 }
 
 
-//节流
+// 节流
 const throttle = (fn, wait = 800) => {
   let prev = Date.now();
   return function () {
@@ -30,7 +30,7 @@ const throttle = (fn, wait = 800) => {
   }
 }
 
-//防抖
+// 防抖
 const debounce = (func, wait = 500) => {
   // wait：500ms；func：被频繁触发的事件
   let timeout;

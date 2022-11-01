@@ -11,6 +11,7 @@ App({
     zpList: [],
     zpItem: {},
     musicFlag: true, // 音乐开关
+    colors: ['#ff0000', '#ff6600', '#fecc11', '#00cc00', '#42a5f6', '#0000ff', '#9900ff']
   },
 
   // 初始化

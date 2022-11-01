@@ -46,13 +46,13 @@ Component({
         title: '我的小决定？',
         awards: [
           {
-            id: 0,
+            awardId: 0,
             name: "最多17个选项",  // 选项名
             color: 'red',         // 选项的背景颜色
             probability: 10       // 概率 0代表永远也转不到这个选项，数字越大概率也就越大
           },
           {
-            id: 1,
+            awardId: 1,
             name: "选项最多填13字",
             color: 'green',
             probability: 0
@@ -117,7 +117,6 @@ Component({
     // 初始化数据
     init() {
       let lottery = this.data.lottery;
-      console.log(lottery);
       if (!lottery || Object.keys(lottery).length < 1) {
         return
       }
@@ -192,8 +191,10 @@ Component({
     */
 
     // GO转盘开始转动
-    // handleOnPayMini: throttle(async function () {
     startLucky: throttle(function () {
+      if (this.data.startFlag) {
+        return
+      }
       var lottery = this.data.lottery, runDegs = this.data.runDegs;
       //>>> 是无符号移位运算符
       var r = Math.random() * lottery.awards.length >>> 0, runNum = 8;
