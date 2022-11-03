@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/add/add",
     "pages/diy/diy",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/3dbox/3dbox"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -24,6 +24,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "3D盒子",
+          "pathName": "pages/3dbox/3dbox",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

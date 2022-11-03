@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="box-container">
+    <view class="box">A</view>
+    <view class="box">B</view>
+    <view class="box">C</view>
+    <view class="box">D</view>
+    <view class="box">E</view>
+    <view class="box">F</view>
+  </view>
+</view>
