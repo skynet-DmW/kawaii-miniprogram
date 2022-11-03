@@ -7,28 +7,34 @@
   color: #fff;
 }
 
-.row {
-  margin: 0 20rpx;
+.col {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
 
-  .col {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 10rpx;
-    padding: 25rpx;
-  }
+  padding: 25rpx;
+  border-bottom: 1rpx #f7f8fa solid;
 }
 
-.cell-group {
-  .row {
-    margin: 2rpx;
+.col-group {
+  margin: 20rpx;
+}
 
-    .col {
-      display: flex;
-      justify-content: space-between;
-      background-color: #fff;
-      border-radius: 10rpx;
-      padding: 25rpx;
-    }
+.popup {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(76, 76, 76, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  >view {
+    height: 500rpx;
+    width: 500rpx;
+    background-color: #07c160;
   }
 }

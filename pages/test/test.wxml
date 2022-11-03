@@ -1,28 +1,43 @@
 <view class="container">
-  <button class=".button">button</button>
-
-  <view class="row">
+  <!-- button -->
+  <button class="button">button</button>
+  <!-- 单元格 -->
+  <view>
     <view class="col">
       <view>LABEL</view>
       <view>VALUE</view>
     </view>
   </view>
-
-  <view class="cell-group">
-    <view class="row">
+  <view>
+    <view class="col">
+      <view>LABEL</view>
+      <view>VALUE</view>
+    </view>
+  </view>
+  <!-- 单元格 组格式 -->
+  <view class="col-group">
+    <view>
       <view class="col">
         <view>group LABEL</view>
         <view>group VALUE</view>
       </view>
     </view>
-    <view class="row">
+    <view>
       <view class="col">
         <view>group LABEL</view>
         <view>group VALUE</view>
       </view>
     </view>
   </view>
+  <!-- 图片 -->
+  <image src="https://img.yzcdn.cn/vant/cat.jpeg" />
+  <!-- 弹出层 -->
+  <button class="button" bindtap="popupClick">弹出层</button>
+  <view class="popup" bindtap="popupClick" wx:if="{{popupShow}}">
+    <view catchtap="popupContentClick">
 
+    </view>
+  </view>
 
 
 </view>

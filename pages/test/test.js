@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    popupShow: false,
   },
 
   /**
@@ -62,5 +62,15 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  popupClick() {
+    this.setData({
+      popupShow: !this.data.popupShow
+    })
+  },
+
+  popupContentClick() {
+    console.log('popupContentClick');
   }
 })
