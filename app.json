@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/add/add",
-    "pages/diy/diy"
+    "pages/diy/diy",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

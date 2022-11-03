@@ -1,0 +1,28 @@
+<view class="container">
+  <button class=".button">button</button>
+
+  <view class="row">
+    <view class="col">
+      <view>LABEL</view>
+      <view>VALUE</view>
+    </view>
+  </view>
+
+  <view class="cell-group">
+    <view class="row">
+      <view class="col">
+        <view>group LABEL</view>
+        <view>group VALUE</view>
+      </view>
+    </view>
+    <view class="row">
+      <view class="col">
+        <view>group LABEL</view>
+        <view>group VALUE</view>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>

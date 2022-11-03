@@ -17,6 +17,13 @@
           "pathName": "pages/diy/diy",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
