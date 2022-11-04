@@ -31,6 +31,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "3D幻灯片",
+          "pathName": "pages/3dslide/3dslide",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
