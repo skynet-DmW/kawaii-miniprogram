@@ -1,0 +1,131 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+}
+
+.snow-container {
+  animation: startSnow 10s linear infinite;
+  height: 100vh;
+}
+
+.snow {
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  color: snow;
+  width: 4em;
+  height: 4em;
+  // outline: 1px dashed yellow;
+  animation: snow 10s linear infinite;
+
+  >view {
+    // 绘制出1个花瓣中间的竖线 
+    width: 0.1em;
+    height: 2em;
+    background-color: currentColor; // currentColor的值即表示color的值
+    border-radius: 0.05em;
+    position: absolute;
+    // 分别旋转每个花瓣，一共6个花瓣，所以各花瓣的旋转角度均相差60度
+    transform-origin: bottom;
+    transform: rotate(calc((var(--n) - 1)* 60deg));
+    // 顶端的圆点，用 ​​<view> ​​​里的第1个 ​​<text>​​ 元素实现
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text:nth-child(1) {
+      width: 0.2em;
+      height: 0.2em;
+      background-color: currentColor;
+      border-radius: 50%;
+    }
+
+    text:nth-child(2),
+    text:nth-child(3),
+    text:nth-child(4),
+    text:nth-child(5) {
+      // 绘制花瓣上的冰凌
+      width: var(--side-length);
+      height: var(--side-length);
+      border: 0.1em solid;
+      border-width: 0.1em;
+      border-style: none solid solid none;
+      border-radius: 0.05em;
+      transform: rotate(45deg); // 折线旋转45度，让它的尖部和竖线重合
+    }
+
+    text:nth-child(2) {
+      margin-top: -0.3em;
+      --side-length: 0.5em;
+    }
+
+    text:nth-child(3) {
+      --side-length: 0.4em;
+    }
+
+    text:nth-child(4) {
+      --side-length: 0.3em;
+    }
+
+    text:nth-child(5) {
+      --side-length: 0.3em;
+    }
+
+  }
+}
+
+
+view:nth-child(1) {
+  --n: 1;
+}
+
+view:nth-child(2) {
+  --n: 2;
+}
+
+view:nth-child(3) {
+  --n: 3;
+}
+
+view:nth-child(4) {
+  --n: 4;
+}
+
+view:nth-child(5) {
+  --n: 5;
+}
+
+view:nth-child(6) {
+  --n: 6;
+}
+
+
+@keyframes snow {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+// @var: `Math.random()`;
+
+// view {
+//   --x: `Math.random()`;
+// }
+
+
+.loop(@counter) when (@counter > 0) {
+  .loop((@counter - 1)); // 递归调用自身
+  // width: (10px * @counter); // 每次调用时产生的样式代码
+  transform: translateX(random() 'vw') translateY(100vh);
+}
+@randomNum: `Math.ceil(Math.random() * 100000)`; 
+
+@keyframes startSnow {
+  to {
+    // .loop(50);
+    transform: translateX(random() + 'vw') translateY(100vh);
+    // transform: translateX(100vw) translateY(100vh);
+  }
+}

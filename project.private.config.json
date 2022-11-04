@@ -38,6 +38,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "雪花",
+          "pathName": "pages/snow/snow",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

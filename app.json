@@ -5,7 +5,8 @@
     "pages/diy/diy",
     "pages/test/test",
     "pages/3dbox/3dbox",
-    "pages/3dslide/3dslide"
+    "pages/3dslide/3dslide",
+    "pages/snow/snow"
   ],
   "window": {
     "backgroundTextStyle": "light",
