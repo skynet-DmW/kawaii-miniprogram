@@ -115,17 +115,17 @@ view:nth-child(6) {
 // }
 
 
-.loop(@counter) when (@counter > 0) {
-  .loop((@counter - 1)); // 递归调用自身
-  // width: (10px * @counter); // 每次调用时产生的样式代码
-  transform: translateX(random() 'vw') translateY(100vh);
-}
-@randomNum: `Math.ceil(Math.random() * 100000)`; 
+// .loop(@counter) when (@counter > 0) {
+//   .loop((@counter - 1)); // 递归调用自身
+//   // width: (10px * @counter); // 每次调用时产生的样式代码
+//   transform: translateX(random() 'vw') translateY(100vh);
+// }
+// @randomNum: `Math.ceil(Math.random() * 100000)`; 
 
 @keyframes startSnow {
   to {
     // .loop(50);
-    transform: translateX(random() + 'vw') translateY(100vh);
-    // transform: translateX(100vw) translateY(100vh);
+    // transform: translateX(random() + 'vw') translateY(100vh);
+    transform: translateX(100vw) translateY(100vh);
   }
 }

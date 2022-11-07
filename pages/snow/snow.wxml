@@ -1,5 +1,5 @@
 <view class="container">
-  <block wx:for="{{1}}" wx:key="index">
+  <block wx:for="{{6}}" wx:key="index">
     <view class="snow-container">
       <view class="snow">
         <view>
