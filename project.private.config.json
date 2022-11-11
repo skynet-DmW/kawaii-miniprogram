@@ -45,6 +45,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "浮动文本",
+          "pathName": "pages/float-text/float-text",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
