@@ -1,0 +1,17 @@
+<view class="container">
+
+  <view class="clock">
+    <view class="scale"></view>
+    <view class="scale"></view>
+    <view class="scale"></view>
+    <view class="scale"></view>
+    <view class="scale"></view>
+    <view class="scale"></view>
+    <view class="mask"></view>
+    <view class="center"></view>
+    <view class="hour"></view>
+    <view class="minute"></view>
+    <view class="second"></view>
+  </view>
+
+</view>

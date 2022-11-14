@@ -1,0 +1,125 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.clock {
+  width: 90vw;
+  height: 90vw;
+  border: 5rpx solid #000;
+  border-radius: 50%;
+  box-shadow: 0px 0px 16px 5rpx skyblue;
+  position: relative;
+
+  .scale {
+    position: absolute;
+    width: 100%;
+    height: 5rpx;
+    background-color: tomato;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .scale:nth-child(2) {
+    transform: rotate(30deg);
+  }
+
+  .scale:nth-child(3) {
+    transform: rotate(60deg);
+  }
+
+  .scale:nth-child(4) {
+    transform: rotate(90deg);
+  }
+
+  .scale:nth-child(5) {
+    transform: rotate(120deg);
+  }
+
+  .scale:nth-child(6) {
+    transform: rotate(150deg);
+  }
+
+  /* 创建一个黑色遮罩层 定位在中心 压住中心的线模拟形成指针效果 */
+  .mask {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    background-color: #000;
+    border-radius: 50%;
+  }
+
+  /* 创建白色小圆点压住各个指针 层级调成最高 */
+  .center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 18rpx;
+    height: 18rpx;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 6;
+  }
+
+  /* 创建时针 */
+  .hour {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    width: 6rpx;
+    height: 25%;
+    background: linear-gradient(to top, #f1536a, #18bee8);
+    transform-origin: 100% 100%;
+    /* 时针一周是12小时 12 * 60 * 60 */
+    animation: run 43200s linear infinite;
+  }
+
+  /* 创建分针 */
+  .minute {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    width: 4rpx;
+    height: 35%;
+    background: linear-gradient(to top, #7180f7, #fa5e82);
+    transform-origin: 100% 100%;
+    /* 分针针一圈转一个小时 一小时是60*60s */
+    animation: run 3600s linear infinite;
+  }
+
+  /* 创建秒针 */
+  .second {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    width: 2rpx;
+    height: 40%;
+    background: linear-gradient(to top, #32bd91, #8163c3);
+    transform-origin: 100% 100%;
+    /* 秒针一圈转60s */
+    animation: run 60s steps(60) infinite;
+  }
+
+}
+
+@keyframes run {
+  form {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: translate(-50%, -100%) rotate(360deg);
+  }
+  
+}

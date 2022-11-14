@@ -7,7 +7,8 @@
     "pages/3dbox/3dbox",
     "pages/3dslide/3dslide",
     "pages/snow/snow",
-    "pages/float-text/float-text"
+    "pages/float-text/float-text",
+    "pages/clock/clock"
   ],
   "window": {
     "backgroundTextStyle": "light",

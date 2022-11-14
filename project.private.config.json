@@ -52,6 +52,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "时钟",
+          "pathName": "pages/clock/clock",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

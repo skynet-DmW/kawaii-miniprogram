@@ -16,6 +16,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-duration: 6s;
+  // perspective: 100rpx;
 }
 
 .box {
@@ -61,13 +62,21 @@
 }
 
 @keyframes boxAnimation {
-  0% {
-    transform: rotate3d(0, 0.5, 1, 0deg)
+  form {
+    transform: rotateX(0) rotateZ(0);
   }
 
-  100% {
-    transform: rotate3d(1, 0.5, 1, 360deg)
+  to {
+    transform: rotateX(1turn) rotateZ(1turn);
   }
+
+  // 0% {
+  //   transform: rotate3d(0, 0.5, 1, 0deg)
+  // }
+
+  // 100% {
+  //   transform: rotate3d(1, 0.5, 1, 360deg)
+  // }
 
   // 0% {
   //   transform: rotate3d(0, 0.5, 1, 0deg)
