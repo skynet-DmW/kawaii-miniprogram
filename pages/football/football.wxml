@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="football ballX">
+    <view class="line"></view>
+  </view>
+  <view class="football ballY">
+    <view class="line"></view>
+  </view>
+</view>

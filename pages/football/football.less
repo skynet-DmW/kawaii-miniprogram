@@ -1,0 +1,41 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  position: relative;
+  // perspective: 800rpx;
+}
+
+.football {
+  width: 90vw;
+  height: 90vw;
+  border: #fff 0rpx solid;
+  border-radius: 50%;
+  box-shadow: 0px 0px 20rpx 20rpx rgb(135, 235, 148);
+  background-color: rgb(208, 235, 135);
+  transform-style: preserve-3d;
+  animation: run 5s linear infinite;
+}
+
+.ballX {
+  position: absolute;
+  // transform: rotateX(10deg);
+}
+
+.ballY {
+  position: absolute;
+  transform: rotateY(180deg)
+}
+
+@keyframes run {
+  form {
+    transform: rotateX(0) rotateZ(0);
+  }
+
+  to {
+    transform: rotateX(1turn) rotateZ(1turn);
+  }
+}

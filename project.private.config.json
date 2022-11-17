@@ -59,6 +59,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "足球",
+          "pathName": "pages/football/football",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "幽灵闪烁",
+          "pathName": "pages/ghost/ghost",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -8,7 +8,9 @@
     "pages/3dslide/3dslide",
     "pages/snow/snow",
     "pages/float-text/float-text",
-    "pages/clock/clock"
+    "pages/clock/clock",
+    "pages/football/football",
+    "pages/ghost/ghost"
   ],
   "window": {
     "backgroundTextStyle": "light",

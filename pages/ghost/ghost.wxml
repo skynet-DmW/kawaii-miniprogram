@@ -1,0 +1,5 @@
+<view class="container">
+  <button class="btn btn-primary btn-ghost btn-shine">
+    hover me
+  </button>
+</view>
