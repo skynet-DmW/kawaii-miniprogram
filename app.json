@@ -10,7 +10,8 @@
     "pages/float-text/float-text",
     "pages/clock/clock",
     "pages/football/football",
-    "pages/ghost/ghost"
+    "pages/ghost/ghost",
+    "pages/userinfo/userinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
