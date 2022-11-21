@@ -1,0 +1,58 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.ball-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: run 5s linear infinite;
+}
+
+.ball {
+  position: absolute;
+  width: 90vw;
+  height: 90vw;
+  border: #fff 0rpx solid;
+  border-radius: 50%;
+
+}
+
+.ball:nth-child(1) {
+  box-shadow: 0px 0px 20rpx 20rpx rgb(235, 135, 135);
+  background-color: rgb(240, 55, 82);
+}
+
+.ball:nth-child(2) {
+  box-shadow: 0px 0px 20rpx 20rpx rgb(227, 252, 0);
+  background-color: rgb(250, 246, 9);
+  transform: rotateY(45deg);
+}
+
+.ball:nth-child(3) {
+  box-shadow: 0px 0px 20rpx 20rpx rgb(2, 245, 95);
+  background-color: rgb(63, 252, 6);
+  transform: rotateY(90deg);
+}
+
+.ball:nth-child(4) {
+  box-shadow: 0px 0px 20rpx 20rpx rgb(188, 2, 245);
+  background-color: rgb(154, 6, 252);
+  transform: rotateY(135deg);
+}
+
+@keyframes run {
+  form {
+    transform: rotateY(0);
+  }
+
+  to {
+    transform: rotateY(1turn);
+  }
+}

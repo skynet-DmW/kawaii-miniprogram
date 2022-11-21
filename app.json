@@ -11,7 +11,8 @@
     "pages/clock/clock",
     "pages/football/football",
     "pages/ghost/ghost",
-    "pages/userinfo/userinfo"
+    "pages/userinfo/userinfo",
+    "pages/globe/globe"
   ],
   "window": {
     "backgroundTextStyle": "light",

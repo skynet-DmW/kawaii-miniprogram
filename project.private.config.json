@@ -80,6 +80,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "地球",
+          "pathName": "pages/globe/globe",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
