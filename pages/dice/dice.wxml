@@ -1,0 +1,57 @@
+<view class="container">
+
+  <view class="dice">
+    <view class="number-container">
+      <view class="number"></view>
+    </view>
+
+    <view class="number-container number2-container">
+      <view class="number2"></view>
+      <view class="number2"></view>
+    </view>
+
+    <view class="number-container number3-container">
+      <view class="number3"></view>
+      <view class="number3"></view>
+      <view class="number3"></view>
+    </view>
+
+    <view class="number-container">
+      <view class="number4-wrapper">
+        <view class="number number4"></view>
+        <view class="number number4"></view>
+      </view>
+      <view class="number4-wrapper">
+        <view class="number number4"></view>
+        <view class="number number4"></view>
+      </view>
+    </view>
+
+    <view class="number-container">
+      <view class="number5-wrapper">
+        <view class="number5"></view>
+        <view class="number5"></view>
+      </view>
+      <view class="number5"></view>
+      <view class="number5-wrapper">
+        <view class="number5"></view>
+        <view class="number5"></view>
+      </view>
+    </view>
+
+    <view class="number-container">
+      <view class="number6-wrapper">
+        <view class="number6"></view>
+        <view class="number6"></view>
+        <view class="number6"></view>
+      </view>
+      <view class="number6-wrapper">
+        <view class="number6"></view>
+        <view class="number6"></view>
+        <view class="number6"></view>
+      </view>
+    </view>
+
+  </view>
+
+</view>

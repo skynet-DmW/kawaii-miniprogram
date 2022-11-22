@@ -87,6 +87,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "骰子",
+          "pathName": "pages/dice/dice",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

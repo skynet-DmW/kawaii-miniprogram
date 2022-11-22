@@ -1,0 +1,161 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1A1E23;
+}
+
+
+.dice {
+  width: 400rpx;
+  height: 400rpx;
+  position: relative;
+  // perspective: 3000rpx;
+  transform-style: preserve-3d;
+  animation: turn 6s linear infinite;
+}
+
+.number-container {
+  position: absolute;
+  width: 400rpx;
+  height: 400rpx;
+  background-color: #fff;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  width: 150rpx;
+  height: 150rpx;
+  background-color: rgb(255, 0, 0);
+  border-radius: 50%;
+}
+
+// 数字2
+.number2-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .number2 {
+    margin: 50rpx;
+    width: 75rpx;
+    height: 75rpx;
+    background-color: #15124e;
+    border-radius: 50%;
+  }
+
+}
+
+// 数字3
+.number3-container {
+  display: inline;
+
+  .number3 {
+    width: 75rpx;
+    height: 75rpx;
+    background-color: #15124e;
+    border-radius: 50%;
+  }
+
+  .number3:nth-child(1) {
+    margin-left: 275rpx;
+    margin-top: 50rpx;
+  }
+
+  .number3:nth-child(2) {
+    margin: 42rpx auto;
+  }
+
+  .number3:nth-child(3) {
+    margin-left: 50rpx;
+    margin-bottom: 50rpx;
+  }
+}
+
+// 数字4
+.number4-wrapper {
+  width: 200rpx;
+  height: 275rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .number4 {
+    width: 75rpx;
+    height: 75rpx;
+  }
+}
+
+// 数字5
+.number5-wrapper {
+  margin: 0 auto;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.number5 {
+  width: 75rpx;
+  height: 75rpx;
+  background-color: #15124e;
+  border-radius: 50%;
+}
+
+
+// 数字6
+.number6-wrapper {
+  margin: 50rpx;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .number6 {
+    width: 75rpx;
+    height: 75rpx;
+    background-color: #15124e;
+    border-radius: 50%;
+  }
+}
+
+.number-container:nth-child(1) {
+  transform: translateZ(200rpx); // 正
+}
+
+.number-container:nth-child(2) {
+  transform: rotateX(90deg) translateZ(200rpx); // 上
+}
+
+.number-container:nth-child(3) {
+  transform: rotateY(-90deg) translateZ(-200rpx); // 左
+}
+
+.number-container:nth-child(4) {
+  transform: rotateY(90deg) translateZ(-200rpx); // 右
+}
+
+.number-container:nth-child(5) {
+  transform: rotateX(-90deg) translateZ(200rpx); // 下
+}
+
+.number-container:nth-child(6) {
+  transform: translateZ(-200rpx); // 反面
+}
+
+
+@keyframes turn {
+  form {
+    transform: rotateX(0) rotateZ(0);
+  }
+
+  to {
+    transform: rotateX(1turn) rotateZ(1turn);
+  }
+}

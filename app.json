@@ -12,7 +12,8 @@
     "pages/football/football",
     "pages/ghost/ghost",
     "pages/userinfo/userinfo",
-    "pages/globe/globe"
+    "pages/globe/globe",
+    "pages/dice/dice"
   ],
   "window": {
     "backgroundTextStyle": "light",
