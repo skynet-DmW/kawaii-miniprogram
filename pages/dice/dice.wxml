@@ -1,6 +1,9 @@
 <view class="container">
 
-  <view class="dice">
+  <view class="btn" bindtap="start">{{ flag ? '结束' : '开始' }}</view>
+
+  <view class="dice" style="{{flag ? 'animation: turn 0.5s linear infinite' : ''}}">
+
     <view class="number-container">
       <view class="number"></view>
     </view>

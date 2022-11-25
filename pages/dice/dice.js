@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    flag: false
   },
 
   /**
@@ -62,5 +62,11 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  start() {
+    this.setData({
+      flag: !this.data.flag
+    })
   }
 })

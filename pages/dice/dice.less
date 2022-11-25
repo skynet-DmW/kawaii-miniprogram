@@ -7,6 +7,21 @@
   background: #1A1E23;
 }
 
+.btn {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  width: 400rpx;
+  height: 100rpx;
+  color: rgb(16, 118, 235);
+  font-size: 50rpx;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #cffa97;
+  border-radius: 10rpx;
+}
 
 .dice {
   width: 400rpx;
@@ -14,7 +29,7 @@
   position: relative;
   // perspective: 3000rpx;
   transform-style: preserve-3d;
-  animation: turn 6s linear infinite;
+  // animation: turn 6s linear infinite;
 }
 
 .number-container {
@@ -22,10 +37,11 @@
   width: 400rpx;
   height: 400rpx;
   background-color: #fff;
-  border-radius: 20%;
+  // border-radius: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 0px 16rpx 5rpx #97fab9;
 }
 
 .number {
