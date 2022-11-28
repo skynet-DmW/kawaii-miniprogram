@@ -57,4 +57,55 @@
 
   </view>
 
+  <view wx:if="{{number === 1}}" class="number-main">
+    <view class="number"></view>
+  </view>
+
+  <view wx:if="{{number === 2}}" class="number-main number2-container">
+    <view class="number2"></view>
+    <view class="number2"></view>
+  </view>
+
+  <view wx:if="{{number === 3}}" class="number-main number3-container">
+    <view class="number3"></view>
+    <view class="number3"></view>
+    <view class="number3"></view>
+  </view>
+
+  <view wx:if="{{number === 4}}" class="number-main">
+    <view class="number4-wrapper">
+      <view class="number number4"></view>
+      <view class="number number4"></view>
+    </view>
+    <view class="number4-wrapper">
+      <view class="number number4"></view>
+      <view class="number number4"></view>
+    </view>
+  </view>
+
+  <view wx:if="{{number === 5}}" class="number-main">
+    <view class="number5-wrapper">
+      <view class="number5"></view>
+      <view class="number5"></view>
+    </view>
+    <view class="number5"></view>
+    <view class="number5-wrapper">
+      <view class="number5"></view>
+      <view class="number5"></view>
+    </view>
+  </view>
+
+  <view wx:if="{{number === 6}}" class="number-main">
+    <view class="number6-wrapper">
+      <view class="number6"></view>
+      <view class="number6"></view>
+      <view class="number6"></view>
+    </view>
+    <view class="number6-wrapper">
+      <view class="number6"></view>
+      <view class="number6"></view>
+      <view class="number6"></view>
+    </view>
+  </view>
+
 </view>

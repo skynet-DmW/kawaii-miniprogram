@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    flag: false
+    flag: false,
+    number: null
   },
 
   /**
@@ -65,8 +66,19 @@ Page({
   },
 
   start() {
-    this.setData({
-      flag: !this.data.flag
-    })
+    const flag = this.data.flag
+    if (flag) {
+      const number = Math.round(Math.random() * (6 - 1)) + 1
+      console.log('随机数：' + number);
+      this.setData({
+        flag: !flag,
+        number
+      })
+    } else {
+      this.setData({
+        flag: !flag,
+        number: null
+      })
+    }
   }
 })
