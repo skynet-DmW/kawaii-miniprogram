@@ -1,4 +1,5 @@
 import * as api from '../../api/index'
+import { filter } from '../../utils/sensitive'
 const app = getApp()
 
 Page({
@@ -122,7 +123,8 @@ Page({
    */
   changeInput(e) {
     const index = e.currentTarget.dataset.index; //当前下标
-    const val = e.detail.value; //当前输入的值
+    let val = e.detail.value; //当前输入的值
+    val = filter(val)
     const awards = this.data.awards; //data中存放的数据
     awards[index].name = val //将当前输入的值放到数组中对应的位置
     this.setData({
