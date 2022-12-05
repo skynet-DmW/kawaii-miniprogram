@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文本渐进显示</title>
+  </head>
+  <body>
+    <p class="gradually">
+      喜羊羊美羊羊懒羊羊沸羊羊
+      慢羊羊软绵绵红太狼灰太狼
+      别看我只是一只羊
+      绿草因为我变得更香
+      天空因为我变得更蓝
+      白云因为我变得柔软
+      别看我只是一只羊
+      羊儿的聪明难以想象
+      天再高心情一样奔放
+      每天都追赶太阳
+      有什么难题去牵绊我
+      都不会去心伤
+      有什么危险
+      在我面前
+      也不会去慌乱
+      就算有狼群把我追捕
+      也当作游戏一场
+      在什么时间都爱开心
+      笑容都会飞翔
+      就算会摔倒
+      站得起来
+      永远不会沮丧
+      在所有天气
+      拥有叫人大笑的力量
+      虽然我只是羊
+    </p>
+  </body>
+</html>
+<script>
+  let landInTexts = document.querySelectorAll(".gradually");
+  landInTexts.forEach((landInText) => {
+    let letters = landInText.textContent.split("");
+    landInText.textContent = "";
+    letters.forEach((letter, i) => {
+      let span = document.createElement("span");
+      span.textContent = letter;
+      span.style.animationDelay = `${i * 0.05}s`;
+      landInText.append(span);
+    });
+  });
+</script>
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(
+        rgba(16, 16, 16, 0.8),
+        rgba(16, 16, 16, 0.8)
+      ),
+      url(https://i.loli.net/2019/10/18/buDT4YS6zUMfHst.jpg);
+    background-size: cover;
+  }
+
+  p {
+    margin: 0 9em;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  .gradually {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.8;
+    color: white;
+    font-family: Lora, serif;
+    white-space: pre;
+  }
+  .gradually span {
+    animation: run 0.8s ease-out both;
+  }
+
+  @keyframes run {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
