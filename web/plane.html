@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>飞机</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="body1"></div>
+      <div class="body2"></div>
+      <div class="body3"></div>
+      <div class="body4"></div>
+    </div>
+  </body>
+</html>
+<style>
+  .container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+  }
+  .body1 {
+    width: 3px;
+    height: 500px;
+    background-color: #48b910;
+    transform-origin: 0 0 0;
+    transform: rotateZ(20deg);
+    position: absolute;
+  }
+  .body2 {
+    width: 3px;
+    height: 500px;
+    background-color: #48b910;
+    position: absolute;
+  }
+  .body3 {
+    width: 3px;
+    height: 480px;
+    background-color: #48b910;
+    transform-origin: 0 0 0;
+    transform: rotateZ(-20deg);
+    position: absolute;
+  }
+  .body4 {
+    width: 2px;
+    height: 480px;
+    background-color: #48b910;
+    transform: rotateZ(90deg);
+  }
+</style>
