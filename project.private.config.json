@@ -1,6 +1,7 @@
 {
   "setting": {
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "urlCheck": false
   },
   "condition": {
     "miniprogram": {
@@ -91,6 +92,13 @@
         {
           "name": "骰子",
           "pathName": "pages/dice/dice",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "web-view",
+          "pathName": "pages/webview/webview",
           "query": "",
           "launchMode": "default",
           "scene": null

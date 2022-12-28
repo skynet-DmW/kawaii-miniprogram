@@ -13,7 +13,8 @@
     "pages/ghost/ghost",
     "pages/userinfo/userinfo",
     "pages/globe/globe",
-    "pages/dice/dice"
+    "pages/dice/dice",
+    "pages/webview/webview"
   ],
   "window": {
     "backgroundTextStyle": "light",
