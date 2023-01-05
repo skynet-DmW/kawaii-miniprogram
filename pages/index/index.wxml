@@ -1,5 +1,7 @@
 <view class="container">
-  <image class="bg" src="/static/images/bg.png"></image>
+  <!-- <image class="bg" src="/statics/images/bg.png"></image> -->
+  <image class="bg1" src="/statics/images/bg1.jpg"></image>
+  <image class="bg2" src="/statics/images/bg2.jpg"></image>
   <view class="zhuanpan">
     <!-- 引用组件↓↓↓ -->
     <zhuanpan id='zhuanpan' bind:awards="getAwards" bind:startLucky="startLucky" size='{{size}}' musicFlag='{{musicFlag}}' quickStart='{{quickStart}}' repeat='{{repeat}}' lottery='{{lottery}}'></zhuanpan>

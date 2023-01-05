@@ -93,9 +93,9 @@ Component({
     // start.src = 'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/start.mp3'; // 转盘开始转动的音乐
     // mid.src = 'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/mid.mp3';     // 快速决定时，转盘开始转动的音乐
     // stop.src = 'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/stop.mp3';   // 转盘停止转动的音乐
-    start.src = '/static/audio/start.mp3'; // 转盘开始转动的音乐
-    mid.src = '/static/audio/start.mp3';     // 快速决定时，转盘开始转动的音乐
-    stop.src = '/static/audio/stop.mp3';   // 转盘停止转动的音乐
+    start.src = '/statics/audio/start.mp3'; // 转盘开始转动的音乐
+    mid.src = '/statics/audio/start.mp3';     // 快速决定时，转盘开始转动的音乐
+    stop.src = '/statics/audio/stop.mp3';   // 转盘停止转动的音乐
 
     this.init();
   },
